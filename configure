@@ -14895,11 +14895,11 @@ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
 #ifdef __cplusplus
 extern "C"
 #endif
-char SSL_library_init ();
+char OPENSSL_init_ssl ();
 int
 main ()
 {
-return SSL_library_init ();
+return OPENSSL_init_ssl ();
   ;
   return 0;
 }
