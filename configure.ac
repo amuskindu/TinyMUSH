@@ -206,12 +206,12 @@ AC_ARG_ENABLE([module-comsys], [AS_HELP_STRING([--enable-module-comsys], [Enable
 AM_CONDITIONAL([WANT_MODULE_COMSYS], [test "x$enable_module_comsys" = "xyes"])
 
 AC_MSG_CHECKING([whether the mail module is enable])
-AC_ARG_ENABLE([module-mail], [AS_HELP_STRING([--enable-module-mail], [Enable support for the mail module @<:@default=yes@:>@])], 
+AC_ARG_ENABLE([module-mail], [AS_HELP_STRING([--enable-module-mail], [Enable support for the mail module @<:@default=no@:>@])], 
  [
   AX_ENABLE_YESNO([$enableval])
  ], [
  AC_MSG_RESULT([yes])
- enable_module_mail="yes"
+ enable_module_mail="no"
  ]
 )
 AM_CONDITIONAL([WANT_MODULE_MAIL], [test "x$enable_module_mail" = "xyes"])
