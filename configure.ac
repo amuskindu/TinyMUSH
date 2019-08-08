@@ -283,7 +283,7 @@ AX_BOX([Checks for libraries])
 # Checks for libraries.
 
 AC_SEARCH_LIBS([crypt], [crypt], [], [AC_MSG_FAILURE([could not find library crypt])])
-AC_SEARCH_LIBS([SSL_library_init], [ssl], [], [AC_MSG_FAILURE([could not find library openssl])])
+AC_SEARCH_LIBS([OPENSSL_init_ssl], [ssl], [], [AC_MSG_FAILURE([could not find library openssl])])
 AC_SEARCH_LIBS([herror], [resolv], [], [AC_MSG_FAILURE([could not find library resolv])])
 AC_SEARCH_LIBS([socket], [c socket], [], [AC_MSG_FAILURE([could not find libraries c or socket])])
 AC_SEARCH_LIBS([gethostbyaddr], [nsl inet], [], [AC_MSG_FAILURE([could not find libraries nls or inet])])
