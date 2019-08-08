@@ -1318,11 +1318,31 @@ void dump_users(DESC * e, char *match, int key)
 	    queue_string(e, NULL, buf);
 	}
     }
+
+    // who_quip added by amuskindu 8/2/2019
+    //
+
+    const char* who_quip;
+
+    if (count < 3) {
+        who_quip="Get A Life...";
+    }
+    else if (count > 2 && count < 5){
+        who_quip="More Than Just A Wizard Is Online!";
+    }
+    else if (count > 4 && count < 10){
+        who_quip="It\'s Lit In Here!";
+    }
+    else if (count > 9){
+        who_quip="Call 911. Shorty\'s Fire Burning On The Dance Floor.  Whoa!";
+    }
+
+
     /*
      * sometimes I like the ternary operator....
      */
     snprintf(s, MBUF_SIZE, "%d", mudconf.max_players);
-    sprintf(buf, "%d Player%slogged in, %d record, %s maximum.\r\n", count, (count == 1) ? " " : "s ", mudstate.record_players, (mudconf.max_players == -1) ? "no" : s);
+    sprintf(buf, "%d Player%slogged in, %d record, %s maximum.  %s\r\n", count, (count == 1) ? " " : "s ", mudstate.record_players, (mudconf.max_players == -1) ? "no" : s, who_quip);
     queue_rawstring(e, NULL, buf);
 
     if (mudconf.have_pueblo == 1) {
