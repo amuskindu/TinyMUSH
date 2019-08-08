@@ -1,4 +1,4 @@
-Making all in src
+Making install in src
 make[1]: Entering directory '/home/tinymush/TinyMUSH/src'
 rm -f prototypes.h
 touch prototypes.h
@@ -30,8 +30,8 @@ echo -e '#include "copyright.h"\n' >> version.h
 echo '#ifndef __VERSION_H' >> version.h
 echo -e '#define __VERSION_H\n' >> version.h
 echo "#define MUSH_BUILD_DATE \"`date -R`\"" >> version.h
-echo "#define MUSH_BUILD_COMPILE \"gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2\"" >> version.h
-echo -e "#define MUSH_BUILD_LTCOMPILE \"/bin/bash ../libtool  --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2\"\n" >> version.h
+echo "#define MUSH_BUILD_COMPILE \"gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra\"" >> version.h
+echo -e "#define MUSH_BUILD_LTCOMPILE \"/bin/bash ../libtool  --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra\"\n" >> version.h
 echo '#endif /* __VERSION_H */' >> version.h
 chmod -w version.h
 rm -f tinymushapi.h
@@ -55,17 +55,11 @@ printf "\n\n#endif                          /* __TINYMUSHAPI_H */\n" >> tinymush
 chmod +w etc/netmush.conf
 /bin/sed -e 's|[@]with_tar_prog@|/bin/tar|g' -e 's|[@]with_compress_prog@|/bin/gzip|g' -e 's|[@]prefix@|/home/tinymush/TinyMUSH/game|g' -e 's|[@]exec_prefix@|/home/tinymush/TinyMUSH/game|g' -e 's|[@]bindir@|/home/tinymush/TinyMUSH/game/bin|g' -e 's|[@]datarootdir@|/home/tinymush/TinyMUSH/game/share/tinymush|g' -e 's|[@]with_install_suffix@|/tinymush|g' -e 's|[@]with_install_suffix@|/tinymush|g' -e 's|[@]sysconfdir@|/home/tinymush/TinyMUSH/game/etc/tinymush|g' -e 's|[@]sysconfdir@|/home/tinymush/TinyMUSH/game/etc/tinymush|g' -e 's|[@]localstatedir@|/home/tinymush/TinyMUSH/game/var|g' -e 's|[@]localstatedir@|/home/tinymush/TinyMUSH/game/var|g' -e 's|[@]libdir@|/home/tinymush/TinyMUSH/game/lib/tinymush|g' -e 's|[@]includedir@|/home/tinymush/TinyMUSH/game/include/tinymush|g' -e 's|[@]libexecdir@|/home/tinymush/TinyMUSH/game/libexec|g' <scripts/Startmush.in >scripts/Startmush
 chmod +x scripts/Startmush
-(CDPATH="${ZSH_VERSION+.}:" && cd .. && /bin/bash /home/tinymush/TinyMUSH/src/libltdl/config/missing autoheader)
-rm -f stamp-h1
-touch config.h.in
-cd .. && /bin/bash ./config.status src/config.h
-config.status: creating src/config.h
-config.status: src/config.h is unchanged
-make  all-recursive
+make  install-recursive
 make[2]: Entering directory '/home/tinymush/TinyMUSH/src'
-Making all in libltdl
+Making install in libltdl
 make[3]: Entering directory '/home/tinymush/TinyMUSH/src/libltdl'
-make  all-am
+make  install-am
 make[4]: Entering directory '/home/tinymush/TinyMUSH/src/libltdl'
 /bin/bash ./libtool  --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I.  -DLT_CONFIG_H='<config.h>' -DLTDL -I. -I. -Ilibltdl -I./libltdl -I./libltdl   -g -O2 -MT dlopen.lo -MD -MP -MF .deps/dlopen.Tpo -c -o dlopen.lo `test -f 'loaders/dlopen.c' || echo './'`loaders/dlopen.c
 libtool: compile:  gcc -DHAVE_CONFIG_H -I. "-DLT_CONFIG_H=<config.h>" -DLTDL -I. -I. -Ilibltdl -I./libltdl -I./libltdl -g -O2 -MT dlopen.lo -MD -MP -MF .deps/dlopen.Tpo -c loaders/dlopen.c  -fPIC -DPIC -o .libs/dlopen.o
@@ -112,14 +106,191 @@ libtool: link: ar cru .libs/libltdlc.a .libs/libltdlc_la-preopen.o .libs/libltdl
 libtool: link: ranlib .libs/libltdlc.a
 libtool: link: rm -fr .libs/libltdlc.lax
 libtool: link: ( cd ".libs" && rm -f "libltdlc.la" && ln -s "../libltdlc.la" "libltdlc.la" )
+make[5]: Entering directory '/home/tinymush/TinyMUSH/src/libltdl'
+make[5]: Leaving directory '/home/tinymush/TinyMUSH/src/libltdl'
 make[4]: Leaving directory '/home/tinymush/TinyMUSH/src/libltdl'
 make[3]: Leaving directory '/home/tinymush/TinyMUSH/src/libltdl'
-Making all in modules/mail/
-make[3]: Entering directory '/home/tinymush/TinyMUSH/src/modules/mail'
-depbase=`echo mail.lo | sed 's|[^/]*$|.deps/&|;s|\.lo$||'`;\
-/bin/bash ../../../libtool  --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I. -I../../../src  -I../../../src/libltdl   -g -O2 -MT mail.lo -MD -MP -MF $depbase.Tpo -c -o mail.lo mail.c &&\
-mv -f $depbase.Tpo $depbase.Plo
-libtool: compile:  gcc -DHAVE_CONFIG_H -I. -I../../../src -I../../../src/libltdl -g -O2 -MT mail.lo -MD -MP -MF .deps/mail.Tpo -c mail.c  -fPIC -DPIC -o .libs/mail.o
-make[3]: Leaving directory '/home/tinymush/TinyMUSH/src/modules/mail'
+make[3]: Entering directory '/home/tinymush/TinyMUSH/src'
+depbase=`echo alloc.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT alloc.o -MD -MP -MF $depbase.Tpo -c -o alloc.o alloc.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo api.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT api.o -MD -MP -MF $depbase.Tpo -c -o api.o api.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo boolexp.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT boolexp.o -MD -MP -MF $depbase.Tpo -c -o boolexp.o boolexp.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo bsd.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT bsd.o -MD -MP -MF $depbase.Tpo -c -o bsd.o bsd.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo command.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT command.o -MD -MP -MF $depbase.Tpo -c -o command.o command.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo conf.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT conf.o -MD -MP -MF $depbase.Tpo -c -o conf.o conf.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo cque.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT cque.o -MD -MP -MF $depbase.Tpo -c -o cque.o cque.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo create.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT create.o -MD -MP -MF $depbase.Tpo -c -o create.o create.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo db.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT db.o -MD -MP -MF $depbase.Tpo -c -o db.o db.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo db_rw.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT db_rw.o -MD -MP -MF $depbase.Tpo -c -o db_rw.o db_rw.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo eval.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT eval.o -MD -MP -MF $depbase.Tpo -c -o eval.o eval.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo file_c.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT file_c.o -MD -MP -MF $depbase.Tpo -c -o file_c.o file_c.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo flags.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT flags.o -MD -MP -MF $depbase.Tpo -c -o flags.o flags.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo fnhelper.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT fnhelper.o -MD -MP -MF $depbase.Tpo -c -o fnhelper.o fnhelper.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo functions.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT functions.o -MD -MP -MF $depbase.Tpo -c -o functions.o functions.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo funext.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT funext.o -MD -MP -MF $depbase.Tpo -c -o funext.o funext.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo funiter.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT funiter.o -MD -MP -MF $depbase.Tpo -c -o funiter.o funiter.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo funlist.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT funlist.o -MD -MP -MF $depbase.Tpo -c -o funlist.o funlist.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo funmath.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT funmath.o -MD -MP -MF $depbase.Tpo -c -o funmath.o funmath.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo funmisc.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT funmisc.o -MD -MP -MF $depbase.Tpo -c -o funmisc.o funmisc.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo funobj.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT funobj.o -MD -MP -MF $depbase.Tpo -c -o funobj.o funobj.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo funstring.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT funstring.o -MD -MP -MF $depbase.Tpo -c -o funstring.o funstring.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo funvars.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT funvars.o -MD -MP -MF $depbase.Tpo -c -o funvars.o funvars.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo game.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT game.o -MD -MP -MF $depbase.Tpo -c -o game.o game.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo help.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT help.o -MD -MP -MF $depbase.Tpo -c -o help.o help.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo htab.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT htab.o -MD -MP -MF $depbase.Tpo -c -o htab.o htab.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo log.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT log.o -MD -MP -MF $depbase.Tpo -c -o log.o log.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo look.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT look.o -MD -MP -MF $depbase.Tpo -c -o look.o look.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo match.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT match.o -MD -MP -MF $depbase.Tpo -c -o match.o match.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo mguests.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT mguests.o -MD -MP -MF $depbase.Tpo -c -o mguests.o mguests.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo move.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT move.o -MD -MP -MF $depbase.Tpo -c -o move.o move.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo netcommon.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT netcommon.o -MD -MP -MF $depbase.Tpo -c -o netcommon.o netcommon.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo object.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT object.o -MD -MP -MF $depbase.Tpo -c -o object.o object.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo player.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT player.o -MD -MP -MF $depbase.Tpo -c -o player.o player.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo player_c.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT player_c.o -MD -MP -MF $depbase.Tpo -c -o player_c.o player_c.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo powers.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT powers.o -MD -MP -MF $depbase.Tpo -c -o powers.o powers.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo predicates.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT predicates.o -MD -MP -MF $depbase.Tpo -c -o predicates.o predicates.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo quota.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT quota.o -MD -MP -MF $depbase.Tpo -c -o quota.o quota.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo recover.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT recover.o -MD -MP -MF $depbase.Tpo -c -o recover.o recover.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo rob.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT rob.o -MD -MP -MF $depbase.Tpo -c -o rob.o rob.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo set.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT set.o -MD -MP -MF $depbase.Tpo -c -o set.o set.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo speech.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT speech.o -MD -MP -MF $depbase.Tpo -c -o speech.o speech.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo stringutil.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT stringutil.o -MD -MP -MF $depbase.Tpo -c -o stringutil.o stringutil.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo timer.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT timer.o -MD -MP -MF $depbase.Tpo -c -o timer.o timer.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo udb_misc.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT udb_misc.o -MD -MP -MF $depbase.Tpo -c -o udb_misc.o udb_misc.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo udb_obj.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT udb_obj.o -MD -MP -MF $depbase.Tpo -c -o udb_obj.o udb_obj.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo udb_ocache.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT udb_ocache.o -MD -MP -MF $depbase.Tpo -c -o udb_ocache.o udb_ocache.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo udb_ochunk.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT udb_ochunk.o -MD -MP -MF $depbase.Tpo -c -o udb_ochunk.o udb_ochunk.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo unparse.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT unparse.o -MD -MP -MF $depbase.Tpo -c -o unparse.o unparse.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo vattr.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT vattr.o -MD -MP -MF $depbase.Tpo -c -o vattr.o vattr.c &&\
+mv -f $depbase.Tpo $depbase.Po
+rm -f version.h
+touch version.h
+chmod +w version.h
+echo -e "/* version.h : additional version information set at compile time */\n\n/*\n * Do not edit this file by hand -- Your changes will be overwritten\n */\n" >> version.h
+echo -e '#include "copyright.h"\n' >> version.h
+echo '#ifndef __VERSION_H' >> version.h
+echo -e '#define __VERSION_H\n' >> version.h
+echo "#define MUSH_BUILD_DATE \"`date -R`\"" >> version.h
+echo "#define MUSH_BUILD_COMPILE \"gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra\"" >> version.h
+echo -e "#define MUSH_BUILD_LTCOMPILE \"/bin/bash ../libtool  --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra\"\n" >> version.h
+echo '#endif /* __VERSION_H */' >> version.h
+chmod -w version.h
+depbase=`echo version.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT version.o -MD -MP -MF $depbase.Tpo -c -o version.o version.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo walkdb.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT walkdb.o -MD -MP -MF $depbase.Tpo -c -o walkdb.o walkdb.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo wild.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT wild.o -MD -MP -MF $depbase.Tpo -c -o wild.o wild.c &&\
+mv -f $depbase.Tpo $depbase.Po
+depbase=`echo wiz.o | sed 's|[^/]*$|.deps/&|;s|\.o$||'`;\
+gcc -DHAVE_CONFIG_H -I.  -I../src/libltdl   -g -O2 -Wall -Wextra -MT wiz.o -MD -MP -MF $depbase.Tpo -c -o wiz.o wiz.c &&\
+mv -f $depbase.Tpo $depbase.Po
+/bin/bash ../libtool  --tag=CC   --mode=link gcc  -g -O2 -Wall -Wextra -export-dynamic  -o netmush alloc.o api.o boolexp.o bsd.o command.o conf.o cque.o create.o db.o db_rw.o eval.o file_c.o flags.o fnhelper.o functions.o funext.o funiter.o funlist.o funmath.o funmisc.o funobj.o funstring.o funvars.o game.o help.o htab.o log.o look.o match.o mguests.o move.o netcommon.o object.o player.o player_c.o powers.o predicates.o quota.o recover.o rob.o set.o speech.o stringutil.o timer.o udb_misc.o udb_obj.o udb_ocache.o udb_ochunk.o unparse.o vattr.o version.o walkdb.o wild.o wiz.o    ../src/libltdl/libltdlc.la -ldl  -dlopen self        libtinydbm.a -lpcre -lm -lssl -lcrypt -ldl 
+libtool: link: rm -f .libs/netmush.nm .libs/netmush.nmS .libs/netmush.nmT
+libtool: link: (cd .libs && gcc -g -O2 -Wall -Wextra -c -fno-builtin "netmushS.c")
+libtool: link: rm -f ".libs/netmushS.c" ".libs/netmush.nm" ".libs/netmush.nmS" ".libs/netmush.nmT"
+libtool: link: gcc -g -O2 -Wall -Wextra -o netmush alloc.o api.o boolexp.o bsd.o command.o conf.o cque.o create.o db.o db_rw.o eval.o file_c.o flags.o fnhelper.o functions.o funext.o funiter.o funlist.o funmath.o funmisc.o funobj.o funstring.o funvars.o game.o help.o htab.o log.o look.o match.o mguests.o move.o netcommon.o object.o player.o player_c.o powers.o predicates.o quota.o recover.o rob.o set.o speech.o stringutil.o timer.o udb_misc.o udb_obj.o udb_ocache.o udb_ochunk.o unparse.o vattr.o version.o walkdb.o wild.o wiz.o .libs/netmushS.o -Wl,--export-dynamic  /home/tinymush/TinyMUSH/src/libltdl/./.libs/dlopen.a ../src/libltdl/.libs/libltdlc.a libtinydbm.a -lpcre -lm -lssl -lcrypt -ldl
+libtool: link: rm -f ".libs/netmushS.o"
+make[3]: Leaving directory '/home/tinymush/TinyMUSH/src'
 make[2]: Leaving directory '/home/tinymush/TinyMUSH/src'
 make[1]: Leaving directory '/home/tinymush/TinyMUSH/src'

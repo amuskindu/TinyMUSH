@@ -246,6 +246,7 @@ int eval_boolexp(dbref player, dbref thing, dbref from, BOOLEXP * b) {
 	}
 }
 
+
 int eval_boolexp_atr(dbref player, dbref thing, dbref from, char *key) {
 	BOOLEXP *b;
 	int ret_value;
@@ -619,49 +620,50 @@ BOOLEXP *parse_boolexp_E(void) {
 }
 
 BOOLEXP *parse_boolexp(dbref player, const char *buf, int internal) {
-	char *p;
-	int num_opens = 0;
-	BOOLEXP *ret;
+        char *p;
+        int num_opens = 0;
+        BOOLEXP *ret;
 
-	if (!internal) {
-		/*
-		 * Don't allow funky characters in locks. Don't allow
-		 * unbalanced parentheses.
-		 */
-		for (p = (char *) buf; *p; p++) {
-			if ((*p == '\t') || (*p == '\r') || (*p == '\n') || (*p == ESC_CHAR)) {
-				return (TRUE_BOOLEXP);
-			}
+        if (!internal) {
+                /*
+                 * Don't allow funky characters in locks. Don't allow
+                 * unbalanced parentheses.
+                 */
+                for (p = (char *) buf; *p; p++) {
+                        if ((*p == '\t') || (*p == '\r') || (*p == '\n') || (*p == ESC_CHAR)) {
+                                return (TRUE_BOOLEXP);
+                        }
 
-			if (*p == '(') {
-				num_opens++;
-			} else if (*p == ')') {
-				if (num_opens > 0) {
-					num_opens--;
-				} else {
-					return (TRUE_BOOLEXP);
-				}
-			}
-		}
+                        if (*p == '(') {
+                                num_opens++;
+                        } else if (*p == ')') {
+                                if (num_opens > 0) {
+                                        num_opens--;
+                                } else {
+                                        return (TRUE_BOOLEXP);
+                                }
+                        }
+                }
 
-		if (num_opens != 0) {
-			return (TRUE_BOOLEXP);
-		}
-	}
+                if (num_opens != 0) {
+                        return (TRUE_BOOLEXP);
+                }
+        }
 
-	if ((buf == NULL) || (*buf == '\0')) {
-		return (TRUE_BOOLEXP);
-	}
+        if ((buf == NULL) || (*buf == '\0')) {
+                return (TRUE_BOOLEXP);
+        }
 
-	parsestore = parsebuf = alloc_lbuf("parse_boolexp");
-	strcpy(parsebuf, buf);
-	parse_player = player;
+        parsestore = parsebuf = alloc_lbuf("parse_boolexp");
+        strcpy(parsebuf, buf);
+        parse_player = player;
 
-	if (!mudstate.standalone) {
-		parsing_internal = internal;
-	}
+        if (!mudstate.standalone) {
+                parsing_internal = internal;
+        }
 
-	ret = parse_boolexp_E();
-	free_lbuf(parsestore);
-	return ret;
+        ret = parse_boolexp_E();
+        free_lbuf(parsestore);
+        return ret;
 }
+
