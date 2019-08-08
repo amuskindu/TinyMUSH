@@ -9,7 +9,7 @@
 #include "alloc.h"		/* required by mudconf */
 #include "flags.h"		/* required by mudconf */
 #include "htab.h"		/* required by mudconf */
-#include "libltdttdl.h"		/* required by mudconf */
+#include "ltdl.h"		/* required by mudconf */
 #include "udb.h"		/* required by mudconf */
 #include "udb_defs.h"		/* required by mudconf */
 
@@ -25,7 +25,7 @@
 #include "attrs.h"		/* required by code */
 #include "match.h"		/* required by code */
 #include "ansi.h"		/* required by code */
-//#include "libltdttdl.h"
+//#include "ltdl.h"
 #include "udb_defs.h"
 /*
  * Some systems are lame, and inet_addr() claims to return -1 on failure,

@@ -2,7 +2,7 @@
 
 #include "copyright.h"
 
-#include <libltdttdl.h>
+#include <ltdl.h>
 
 #ifndef __API_H
 #define __API_H

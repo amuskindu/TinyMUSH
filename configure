@@ -1529,7 +1529,7 @@ Optional Features:
                           can improve performance if enough memory is
                           available. [default=yes]
   --enable-module-comsys  Enable support for the comsys module [default=no]
-  --enable-module-mail    Enable support for the mail module [default=yes]
+  --enable-module-mail    Enable support for the mail module [default=no]
   --enable-module-dbsql   Enable support for the dbsql module [default=no]
 
 Optional Packages:
@@ -13963,8 +13963,8 @@ fi
 
 else
 
-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
-$as_echo "yes" >&6; }
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+$as_echo "no" >&6; }
   enable_module_comsys="no"
 
 
@@ -13994,9 +13994,9 @@ fi
 
 else
 
- { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
-$as_echo "yes" >&6; }
- enable_module_mail="yes"
+ { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+$as_echo "no" >&6; }
+ enable_module_mail="no"
 
 
 fi

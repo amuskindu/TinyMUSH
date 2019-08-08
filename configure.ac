@@ -199,7 +199,7 @@ AC_ARG_ENABLE([module-comsys], [AS_HELP_STRING([--enable-module-comsys], [Enable
  [
   AX_ENABLE_YESNO([$enableval])
  ], [
-  AC_MSG_RESULT([yes])
+  AC_MSG_RESULT([no])
   enable_module_comsys="no"
  ]
 )
@@ -210,7 +210,7 @@ AC_ARG_ENABLE([module-mail], [AS_HELP_STRING([--enable-module-mail], [Enable sup
  [
   AX_ENABLE_YESNO([$enableval])
  ], [
- AC_MSG_RESULT([yes])
+ AC_MSG_RESULT([no])
  enable_module_mail="no"
  ]
 )
