@@ -1559,7 +1559,7 @@ Optional Packages:
                           values are : gdbm Use the traditional GDBM hash
                           database driver, or qdbm : Use the new QDBM hash
                           database driver. A newer implementation of the DBM
-                          engine. [default=qdbm]
+                          engine. [default=gdbm]
   --with-module-dbsql=DRIVER
                           Select the SQL driver used by the db_sql module,
                           valid values are : none : no database driver, msql :

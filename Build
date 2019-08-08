@@ -1,0 +1,8 @@
+#!/bin/sh
+
+./configure
+
+echo "Building LibTinyDBM"
+cd src;make libtinydbm.a
+echo "Building and Installing"
+cd ..;make && make install

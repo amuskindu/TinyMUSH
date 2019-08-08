@@ -126,7 +126,7 @@ AM_CONDITIONAL(GCC_DEBUG, test x"$with_debug" = x"true")
 
 AC_MSG_CHECKING([dbm engine to use])
 AC_ARG_WITH([dbm],
- [AS_HELP_STRING([--with-dbm=gdbm|qdbm], [Select the DBM driver used to save game data, valid values are : gdbm Use the traditional GDBM hash database driver, or qdbm : Use the new QDBM hash database driver. A newer implementation of the DBM engine. @<:@default=qdbm@:>@])],
+ [AS_HELP_STRING([--with-dbm=gdbm|qdbm], [Select the DBM driver used to save game data, valid values are : gdbm Use the traditional GDBM hash database driver, or qdbm : Use the new QDBM hash database driver. A newer implementation of the DBM engine. @<:@default=gdbm@:>@])],
  [AS_CASE([$withval], 
   [gdbm],
    [
