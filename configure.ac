@@ -195,12 +195,12 @@ AC_ARG_ENABLE([disk-based], [AS_HELP_STRING([--enable-disk-based], [store the da
 )
 
 AC_MSG_CHECKING([whether the comsys module is enable])
-AC_ARG_ENABLE([module-comsys], [AS_HELP_STRING([--enable-module-comsys], [Enable support for the comsys module @<:@default=yes@:>@])], 
+AC_ARG_ENABLE([module-comsys], [AS_HELP_STRING([--enable-module-comsys], [Enable support for the comsys module @<:@default=no@:>@])], 
  [
   AX_ENABLE_YESNO([$enableval])
  ], [
   AC_MSG_RESULT([yes])
-  enable_module_comsys="yes"
+  enable_module_comsys="no"
  ]
 )
 AM_CONDITIONAL([WANT_MODULE_COMSYS], [test "x$enable_module_comsys" = "xyes"])

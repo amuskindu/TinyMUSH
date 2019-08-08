@@ -9,7 +9,7 @@
 #include "alloc.h"		/* required by mushconf */
 #include "flags.h"		/* required by mushconf */
 #include "htab.h"		/* required by mushconf */
-#include "ltdl.h"		/* required by mushconf */
+#include "libltdttdl.h"		/* required by mushconf */
 #include "udb.h"		/* required by mushconf */
 #include "udb_defs.h"	/* required by mushconf */
 
